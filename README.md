@@ -1,7 +1,7 @@
 # Digital-Reason-News
 This project is a playground for Umbraco headless called "reason digital news"
 
-[![Travis build status](https://img.shields.io/travis/ja0b/digital-reason-news/master.svg?label=master)](https://api.travis-ci.org/ja0b/Digital-Reason-News.svg?branch=master&status=passed)
+[![Travis build status](https://img.shields.io/travis/ja0b/digital-reason-news/master.svg?label=master)](https://api.travis-ci.org/ja0b/Digital-Reason-News.svg?branch=master&status=passed) [![Umbraco version](https://img.shields.io/badge/umbraco-8.11.1-%233544b1)](https://github.com/ja0b/Digital-Reason-News)
 
 ## Getting started
 
