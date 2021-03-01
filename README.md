@@ -1,6 +1,8 @@
 # Digital-Reason-News
 This project is a playground for Umbraco headless called "reason digital news"
 
+[![Travis build status](https://img.shields.io/travis/ja0b/digital-reason-news/master.svg?label=master)](https://api.travis-ci.org/ja0b/Digital-Reason-News.svg?branch=master&status=passed)
+
 ## Getting started
 
 I'm using .NET 4.8, so make sure you have it on your machine and this should build with any issues :)
