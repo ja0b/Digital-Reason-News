@@ -358,3 +358,4 @@ ood.flag
 Source/ReasonDigitalNews.Web/App_Data
 Source/ReasonDigitalNews.Web/Umbraco
 Source/ReasonDigitalNews.Web/Umbraco_Client
+*.editorconfig
