@@ -20,4 +20,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore Source/ReasonDigitalNews.sln
     - name: Build
-      run: dotnet build Source/ReasonDigitalNews.sln --no-restore
+      run: msbuild Source/ReasonDigitalNews.sln --no-restore
