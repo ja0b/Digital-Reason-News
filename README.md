@@ -28,6 +28,13 @@ But I wanted this /api/ behaviour in the routes, so I developed 2 options:
 
 NOTE: I changed the grid in favour of blocks I think this new concept is more solid and editor friendly.
 
+## Backoffice User:
+
+```sh
+Email: admin@admin.com
+Password: 0123456789
+```
+
 ## License
 
 Copyright &copy; 2021
