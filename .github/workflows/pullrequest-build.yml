@@ -1,0 +1,61 @@
+name: Build
+
+on:
+ pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+    env:
+      # Dotnet Setup
+      DOTNET_VERSION: 3.1.401
+
+      # Stop wasting time caching packages
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
+      # Disable sending usage data to Microsoft
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+      # Solution Setup
+      CONFIG: 'Release'
+      SOLUTION: 'Source\ReasonDigitalNews.sln'
+
+      # Nuget Setup
+      NUGET_VERSION: 'latest'
+
+    steps:
+      - name: Checkout reference commit
+        uses: actions/checkout@v2
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Configure NuGet
+        uses: nuget/setup-nuget@v1
+        with:
+          nuget-version: ${{ env.NUGET_VERSION }}
+
+      - name: NuGet Restore
+        run: nuget restore ${{ env.SOLUTION }}
+
+      - name: Install dependencies
+        run: dotnet restore ${{env.SOLUTION}}
+
+      - name: Build
+        shell: powershell
+        run: |
+          msbuild.exe ${{ env.SOLUTION }} `
+          '/p:Configuration=${{ env.CONFIG }}' `
+          '/p:DeployOnBuild=false' `
+          '/p:SkipInvalidConfigurations=true' `
+          '/p:TransformWebConfigEnabled=False' `
+          '/p:AutoParameterizationWebConfigConnectionStrings=False' `
+          '/p:MarkWebConfigAssistFilesAsExclude=False' `
+          '/p:BuildFeAssets=false'

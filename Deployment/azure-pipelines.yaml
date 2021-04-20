@@ -1,0 +1,63 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:  
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+  branches:
+    include:
+      - env-dev
+      - env-staging
+
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: 'Source/ReasonDigitalNews.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- powershell: |
+   $ver = $env:BUILD_SOURCEBRANCH.remove(0, 10)
+   Write-Host "##vso[task.setvariable variable=Version]$ver"
+  displayName: 'Update version to Tag'
+  condition: and(failed(), startsWith(variables['Build.SourceBranchName'], 'env-'))
+
+- task: Assembly-Info-NetFramework@2
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    FileNames: |
+      **\AssemblyInfo.cs
+    InsertAttributes: false
+    FileEncoding: 'auto'
+    WriteBOM: false
+    Title: 'Reason Digital'
+    Description: 'Umbraco V8 site for http://reasondigitalnews.local/'
+    Company: 'Reason Digital'
+    Copyright: 'Copyright © $(date:YYYY) $(date:DD.MM.YYYY DD MMMM YYYY HH:mm a) Reason Digital'
+    VersionNumber: '$(Version)'
+    FileVersionNumber: '$(Version)'
+    InformationalVersion: '$(Version)'
+  condition: and(failed(), startsWith(variables['Build.SourceBranchName'], 'env-'))
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(Build.ArtifactStagingDirectory)" /p:TransformWebConfigEnabled=False /p:AutoParameterizationWebConfigConnectionStrings=False /p:MarkWebConfigAssistFilesAsExclude=False /p:BuildFeAssets=false' 
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: 'drop_reason_digital'

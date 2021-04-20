@@ -1,0 +1,22 @@
+﻿<div ng-controller="uSyncPublisherResultController as pvm">
+
+    <div ng-if="!vm.complete">
+        <div class="alert alert-warning">
+            <localize key="usyncpublish_systemApplyWarning"></localize>
+        </div>
+    </div>
+
+    <usync-report-summary results="vm.report"
+                          stage="'result'"
+                          toggle="vm.showDetails">
+    </usync-report-summary>
+
+    <div ng-if="vm.showDetails" class="mt3">
+        <usync-publish-result-view results="vm.report"
+                                    total="vm.total"
+                                    is-modal="vm.isModal" />
+    </div>
+
+
+
+</div>

@@ -7,23 +7,62 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReasonDigitalNews.Web", "Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReasonDigitalNews.Core", "ReasonDigitalNews.Core\ReasonDigitalNews.Core.csproj", "{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployments", "Deployments", "{66E89687-02B3-4EB9-92FF-13789441BCA3}"
+	ProjectSection(SolutionItems) = preProject
+		..\Deployment\azure-pipelines.yaml = ..\Deployment\azure-pipelines.yaml
+		..\Deployment\README.md = ..\Deployment\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{853820F4-9AAF-4644-8C38-3E4B711C1A3B}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\PULL_REQUEST_TEMPLATE.md = ..\.github\PULL_REQUEST_TEMPLATE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{96B17121-1033-4779-A062-4971FE720BE5}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\pullrequest-build.yml = ..\.github\workflows\pullrequest-build.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Dev|Any CPU = Dev|Any CPU
+		Prod|Any CPU = Prod|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Staging|Any CPU = Staging|Any CPU
+		UAT|Any CPU = UAT|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Prod|Any CPU.ActiveCfg = Prod|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Prod|Any CPU.Build.0 = Prod|Any CPU
 		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Staging|Any CPU.ActiveCfg = Staging|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.Staging|Any CPU.Build.0 = Staging|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{11D1A0F2-B224-498A-801C-2696DCA99EF1}.UAT|Any CPU.Build.0 = UAT|Any CPU
 		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Prod|Any CPU.ActiveCfg = Prod|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Prod|Any CPU.Build.0 = Prod|Any CPU
 		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Staging|Any CPU.ActiveCfg = Staging|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.Staging|Any CPU.Build.0 = Staging|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{FDE57F2A-8405-468C-AB07-EE4AB50AE0FB}.UAT|Any CPU.Build.0 = UAT|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{96B17121-1033-4779-A062-4971FE720BE5} = {853820F4-9AAF-4644-8C38-3E4B711C1A3B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {124D4A26-B67C-44BF-B8CE-AEF7B7B3D096}

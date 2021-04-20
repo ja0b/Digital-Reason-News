@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <CopyAllFilesToSingleFolderForPackageDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForPackageDependsOn>
+    <CopyAllFilesToSingleFolderForMsdeployDependsOn>
+      CustomCollectFiles;
+      $(CopyAllFilesToSingleFolderForPackageDependsOn);
+    </CopyAllFilesToSingleFolderForMsdeployDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CustomCollectFiles">
+    <ItemGroup>
+      <Bin Include="bin\**\*" />
+      <Config Include="config\**\*" />
+      <USync Include="uSync\**\*" />
+      <Views Include="Views\**\*" />
+
+      <FilesForPackagingFromProject Include="%(Bin.Identity)">
+        <DestinationRelativePath>bin\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+
+      <FilesForPackagingFromProject Include="%(Config.Identity)">
+        <DestinationRelativePath>config\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+
+      <FilesForPackagingFromProject Include="%(USync.Identity)">
+        <DestinationRelativePath>uSync\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+
+      <FilesForPackagingFromProject Include="%(Views.Identity)">
+        <DestinationRelativePath>Views\%(RecursiveDir)%(Filename)%(Extension)</DestinationRelativePath>
+      </FilesForPackagingFromProject>
+    </ItemGroup>
+  </Target>
+</Project>

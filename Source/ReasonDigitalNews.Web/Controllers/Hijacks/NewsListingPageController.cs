@@ -12,7 +12,7 @@ using Umbraco.Web.Mvc;
 
 namespace ReasonDigitalNews.Web.Controllers.Hijacks
 {
-    public class NewsListingPageController : RenderMvcController
+    public partial class NewsListingPageController : RenderMvcController
     {
         private readonly JsonSerializerSettings _jsonSerializerSettings;
         private readonly UmbracoMapper _umbracoMapper;

@@ -1,0 +1,13 @@
+﻿<div ng-controller="uSyncPublisherReportController as pvm">
+
+    <usync-report-summary results="pvm.results"
+                          stage="'report'"
+                          toggle="pvm.showDetails">
+    </usync-report-summary>
+
+    <div ng-if="pvm.showDetails" class="mt3">
+        <usync-publish-result-view results="vm.report"
+                                    total="vm.total"
+                                    is-modal="vm.isModal" />
+    </div>
+</div>
