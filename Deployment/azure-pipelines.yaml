@@ -60,4 +60,4 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
-    ArtifactName: 'drop_reason_digital'
+    ArtifactName: 'drop_reason_digital_news'
