@@ -1,6 +1,6 @@
 # ASP.NET
 # Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:  
+# Add steps that publish symbols, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
@@ -8,7 +8,9 @@ trigger:
     include:
       - env-dev
       - env-staging
-
+  tags:
+    include:
+      - '*'
 pr: none
 
 pool:
@@ -52,7 +54,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(Build.ArtifactStagingDirectory)" /p:TransformWebConfigEnabled=False /p:AutoParameterizationWebConfigConnectionStrings=False /p:MarkWebConfigAssistFilesAsExclude=False /p:BuildFeAssets=false' 
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(Build.ArtifactStagingDirectory)" /p:TransformWebConfigEnabled=False /p:AutoParameterizationWebConfigConnectionStrings=False /p:MarkWebConfigAssistFilesAsExclude=False /p:BuildFeAssets=false'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
