@@ -19,43 +19,36 @@ using Umbraco.ModelsBuilder.Embedded;
 
 namespace ReasonDigitalNews.Core.Models.CmsModels
 {
-	/// <summary>News Listing Page</summary>
-	[PublishedModel("newsListingPage")]
-	public partial class NewsListingPage : PublishedContentModel, IBaseContent
+	/// <summary>Carousel Block</summary>
+	[PublishedModel("carouselBlock")]
+	public partial class CarouselBlock : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.13.0")]
-		public new const string ModelTypeAlias = "newsListingPage";
+		public new const string ModelTypeAlias = "carouselBlock";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.13.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.13.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.13.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<NewsListingPage, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CarouselBlock, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public NewsListingPage(IPublishedContent content)
+		public CarouselBlock(IPublishedElement content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Page Description: Short description of the page.
+		/// Carousel Items
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.13.0")]
-		[ImplementPropertyType("pageDescription")]
-		public virtual string PageDescription => global::ReasonDigitalNews.Core.Models.CmsModels.BaseContent.GetPageDescription(this);
-
-		///<summary>
-		/// Page Title: Title of the page. If empty defaults to node name.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.13.0")]
-		[ImplementPropertyType("pageTitle")]
-		public virtual string PageTitle => global::ReasonDigitalNews.Core.Models.CmsModels.BaseContent.GetPageTitle(this);
+		[ImplementPropertyType("carouselItems")]
+		public virtual global::Umbraco.Core.Models.Blocks.BlockListModel CarouselItems => this.Value<global::Umbraco.Core.Models.Blocks.BlockListModel>("carouselItems");
 	}
 }

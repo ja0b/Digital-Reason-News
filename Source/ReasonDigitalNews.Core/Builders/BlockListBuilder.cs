@@ -1,7 +1,10 @@
-﻿using ReasonDigitalNews.Core.Extensions;
+﻿using Newtonsoft.Json;
+using ReasonDigitalNews.Core.Extensions;
 using ReasonDigitalNews.Core.Models.CmsModels;
 using ReasonDigitalNews.Core.Models.Shared;
+using ReasonDigitalNews.Core.Models.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 using Umbraco.Core.Models.Blocks;
 using Umbraco.Web;
 
@@ -47,6 +50,25 @@ namespace ReasonDigitalNews.Core.Builders
                             var imageBlock = new ImageBlock(block.Content);
 
                             blockElement.BlockValue = imageBlock.Image.Url();
+                            blockListValues.Add(blockElement);
+
+                            break;
+                        }
+
+                    case CarouselBlock.ModelTypeAlias:
+                        {
+                            var carouselBlock = new CarouselBlock(block.Content);
+                            var carouselItemsBlock = carouselBlock.CarouselItems.Select(x => x.Content)
+                                .OfType<CarouselItemBlock>();
+
+                            var carouselItems = carouselItemsBlock.Select(carouselItemBlock =>
+                                    new CarouselItemBlockViewModel
+                                    {
+                                        Image = carouselItemBlock.Image.Url()
+                                    })
+                                .ToList();
+
+                            blockElement.BlockValue = JsonConvert.SerializeObject(carouselItems);
                             blockListValues.Add(blockElement);
 
                             break;

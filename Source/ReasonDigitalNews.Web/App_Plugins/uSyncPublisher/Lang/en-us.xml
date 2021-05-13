@@ -257,6 +257,9 @@
 		<key alias="error_notenabled">The server is not enabled.</key>
 		<key alias="error_nopublisher">There is no valid publisher for this server</key>
 		<key alias="error_unknownserver">The server is unknown</key>
+		<key alias="error_notfound">Umbraco not found - server responded but URL returned 404</key>
+		<key alias="error_invalidresponse">Invalid response - server didn't respond with a version number</key>
+		<key alias="error_unknown">Unexpected response - check the logs to see the status code and reason</key>
 
 		<!-- buttons -->
 		<key alias="send">Send to server</key>

@@ -155,6 +155,10 @@
                 case 'templates':
                     item.flags.includeFiles = true;
                     break;
+                case 'dictionary':
+                    item.flags.includeAncestors = false;
+                    item.flags.includeDependencies = false;
+                    break;
             }
         }
 
